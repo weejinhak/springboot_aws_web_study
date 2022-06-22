@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @RunWith(SpringRunner.class)
@@ -42,8 +41,8 @@ public class HelloControllerTest {
 					.param("name", name)
 					.param("amount", String.valueOf(amount)))
 			.andExpect(status().isOk())
-			.andExpect((ResultMatcher) jsonPath("$.name", is(name)))
-			.andExpect((ResultMatcher) jsonPath("$.amount", is(amount)));
+			.andExpect(jsonPath("$.name", is(name)))
+			.andExpect(jsonPath("$.amount", is(amount)));
 
 	}
 }
